@@ -1,4 +1,4 @@
 library(testthat)
-library(daterangepicker)
+library(perioddaterangepicker)
 
-test_check("daterangepicker")
+test_check("perioddaterangepicker")

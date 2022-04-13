@@ -1,49 +1,49 @@
 
 
-#' updateDaterangepicker
-#'
-#' Change the start and end values of a daterangepicker on the client
-#'
-#' @param session The session object passed to function given to shinyServer.
-#' @inheritParams daterangepicker
-#' @family daterangepicker Functions
-#' @export
-updateDaterangepicker <- function(session, inputId, label = NULL,
-                                  start = NULL, end = NULL,
-                                  min = NULL, max = NULL,
-                                  icon = NULL, options = NULL,
-                                  ranges = NULL, style = NULL,
-                                  class = NULL) {
-
-  ## If no icon was passed initially, we need to create a WebDependency-list
-  ## On the JS-side `Shiny.renderDependencies` adds the deps to the header
-  if (!is.null(icon)) {
-    icon$htmldeps <- list(shiny::createWebDependency(
-      htmltools::resolveDependencies(
-        htmltools::htmlDependencies(
-          icon
-        )
-      )[[1]]
-    ))
-  }
-
-  message <- filterEMPTY(list(
-    id = session$ns(inputId),
-    label = label,
-    start = start,
-    end = end,
-    minDate = min,
-    maxDate = max,
-    icon = icon,
-    options = options,
-    ranges = ranges,
-    style = style,
-    class = class
-  ))
-
-  session$sendInputMessage(inputId, message)
-}
-
+# updateDaterangepicker
+#
+# Change the start and end values of a daterangepicker on the client
+#
+# @param session The session object passed to function given to shinyServer.
+# @inheritParams daterangepicker
+# @family daterangepicker Functions
+# @export
+# updateDaterangepicker <- function(session, inputId, label = NULL,
+#                                   start = NULL, end = NULL,
+#                                   min = NULL, max = NULL,
+#                                   icon = NULL, options = NULL,
+#                                   ranges = NULL, style = NULL,
+#                                   class = NULL) {
+#
+#   ## If no icon was passed initially, we need to create a WebDependency-list
+#   ## On the JS-side `Shiny.renderDependencies` adds the deps to the header
+#   if (!is.null(icon)) {
+#     icon$htmldeps <- list(shiny::createWebDependency(
+#       htmltools::resolveDependencies(
+#         htmltools::htmlDependencies(
+#           icon
+#         )
+#       )[[1]]
+#     ))
+#   }
+#
+#   message <- filterEMPTY(list(
+#     id = session$ns(inputId),
+#     label = label,
+#     start = start,
+#     end = end,
+#     minDate = min,
+#     maxDate = max,
+#     icon = icon,
+#     options = options,
+#     ranges = ranges,
+#     style = style,
+#     class = class
+#   ))
+#
+#   session$sendInputMessage(inputId, message)
+# }
+#
 
 
 
@@ -193,7 +193,6 @@ perioddaterangeOptions <- function(period = c("day","week","month","quarter","ye
                                    anchorElement = NULL,
                                    parentElement = NULL,
                                    forceUpdate = FALSE,
-                                   timezone = "utc",
                                    locale = list(
                                      applyButtonTitle = "Apply",
                                      cancelButtonTitle = "Cancel",
@@ -228,7 +227,6 @@ perioddaterangeOptions <- function(period = c("day","week","month","quarter","ye
     anchorElement = anchorElement,
     parentElement = parentElement,
     forceUpdate = forceUpdate,
-    timeZone = timezone,
     locale = locale
   ))
 }

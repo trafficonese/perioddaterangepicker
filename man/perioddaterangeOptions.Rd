@@ -17,7 +17,6 @@ perioddaterangeOptions(
   anchorElement = NULL,
   parentElement = NULL,
   forceUpdate = FALSE,
-  timezone = "utc",
   locale = list(applyButtonTitle = "Apply", cancelButtonTitle = "Cancel", endLabel =
     "End", inputFormat = "L", startLabel = "Start", dayLabel = "Day", weekLabel = "Week",
     monthLabel = "Month", quarterLabel = "Quarter", yearLabel = "Year")
