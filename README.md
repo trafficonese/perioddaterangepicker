@@ -7,6 +7,7 @@
 <!-- badges: start -->
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Codecov test coverage](https://codecov.io/gh/trafficonese/perioddaterangepicker/branch/master/graph/badge.svg)](https://app.codecov.io/gh/trafficonese/perioddaterangepicker?branch=master)
+[![R build status](https://github.com/trafficonese/perioddaterangepicker/workflows/R-CMD-check/badge.svg)](https://github.com/trafficonese/perioddaterangepicker/actions)
 <!-- badges: end -->
 
 Custom Shiny input binding for a [Date Range Picker](https://sensortower.github.io/daterangepicker/).
@@ -34,8 +35,7 @@ ui <- fluidPage(
     style = "width:100%; border-radius:4px",
     icon = icon("calendar")
   ),
-  verbatimTextOutput("print"),
-  actionButton("act", "Update Daterangepicker"),
+  verbatimTextOutput("print")
 )
 
 ## SERVER ##########################
@@ -43,11 +43,6 @@ server <- function(input, output, session) {
   output$print <- renderPrint({
     req(input$daterange)
     input$daterange
-  })
-  observeEvent(input$act, {
-    updateDaterangepicker(session, "daterange",
-                          start = Sys.Date(), 
-                          end = Sys.Date() - 100)
   })
 }
 
