@@ -9,11 +9,11 @@
 #' @family perioddaterangepicker Functions
 #' @export
 updatePerioddaterangepicker <- function(session, inputId, label = NULL,
-                                  start = NULL, end = NULL,
-                                  min = NULL, max = NULL,
-                                  icon = NULL, options = NULL,
-                                  ranges = NULL, style = NULL,
-                                  class = NULL) {
+                                        start = NULL, end = NULL,
+                                        min = NULL, max = NULL,
+                                        icon = NULL, options = NULL,
+                                        ranges = NULL, style = NULL,
+                                        class = NULL) {
 
   ## If no icon was passed initially, we need to create a WebDependency-list
   ## On the JS-side `Shiny.renderDependencies` adds the deps to the header
