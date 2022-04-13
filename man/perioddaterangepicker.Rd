@@ -26,10 +26,10 @@ perioddaterangepicker(
 \item{label}{The label for the control, or NULL for no label.}
 
 \item{start}{The beginning date of the initially selected. Must be a Date /
-POSIXt or string. If NULL will default to the current day.}
+POSIXt or string.}
 
 \item{end}{The end date of the initially selected date range. Must be a Date
-/ POSIXt or string. If NULL will default to the current day.}
+/ POSIXt or string.}
 
 \item{min}{The earliest date a user may select. Must be a Date or string}
 

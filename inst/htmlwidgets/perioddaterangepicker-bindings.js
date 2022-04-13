@@ -57,7 +57,6 @@ $.extend(PeriodDateRangePickerBinding, {
     }
 
     var callback = function(startDate, endDate, period, configs) {
-      debugger;
       let format = JSON.parse(el.attributes.options.value).locale.inputFormat;
       $(this).val(startDate.format(format) + ' – ' + endDate.format(format))
       if ($(el).data("daterangepicker")) {
@@ -90,26 +89,6 @@ $.extend(PeriodDateRangePickerBinding, {
     return "PeriodDateRangePickerBinding";
   },
   subscribe: function(el, callback) {
-    $(el).on("show.daterangepicker", function(event) {
-      callback();
-    });
-    $(el).on("hide.daterangepicker", function(event) {
-      callback();
-    });
-    $(el).on("apply.daterangepicker", function(event) {
-      callback();
-    });
-    $(el).on("cancel.daterangepicker", function(event) {
-      var opt = JSON.parse(this.attributes.options.nodeValue);
-      if (opt.cancelIsClear !== undefined && opt.cancelIsClear) {
-        $(this).val('');
-      } else {
-        callback();
-      }
-    });
-    $(el).on("change.daterangepicker", function(event) {
-      callback();
-    });
   },
   unsubscribe: function(el) {
     $(el).off(".PeriodDateRangePickerBinding");
@@ -120,11 +99,11 @@ $.extend(PeriodDateRangePickerBinding, {
 
     // Update Start
     if (data.hasOwnProperty("start")) {
-      pickerdata.setStartDate(moment(data.start));
+      pickerdata.startDate(moment(data.start));
     }
     // Update End
     if (data.hasOwnProperty("end")) {
-      pickerdata.setEndDate(moment(data.end));
+      pickerdata.endDate(moment(data.end));
     }
     // Update Icon
     if (data.hasOwnProperty("icon")) {
@@ -150,11 +129,11 @@ $.extend(PeriodDateRangePickerBinding, {
     }
     // Update minDate
     if (data.hasOwnProperty("minDate")) {
-      pickerdata.minDate = moment(data.minDate);
+      pickerdata.minDate(moment(data.minDate));
     }
     // Update maxDate
     if (data.hasOwnProperty("maxDate")) {
-      pickerdata.maxDate = moment(data.maxDate);
+      pickerdata.maxDate(moment(data.maxDate));
     }
 
     // Update style
@@ -162,6 +141,7 @@ $.extend(PeriodDateRangePickerBinding, {
       $("#"+data.id).attr("style", data.style);
     }
     // Update ranges
+    /*
     if (data.hasOwnProperty("ranges")) {
       if (data.ranges !== undefined || data.ranges !== null) {
         for (var key in data.ranges) {
@@ -189,21 +169,13 @@ $.extend(PeriodDateRangePickerBinding, {
 
           // If the start or end date exceed those allowed by the minDate or maxSpan
           // options, shorten the range to the allowable period.
-          if (pickerdata.minDate && start.isBefore(pickerdata.minDate))
-              start = pickerdata.minDate.clone();
+          var minDate = pickerdata.minDate();
+          if (minDate && start.isBefore(minDate))
+              start = minDate.clone();
 
-          var maxDate = pickerdata.maxDate;
-          if (pickerdata.maxSpan && maxDate && start.clone().add(pickerdata.maxSpan).isAfter(maxDate))
-              maxDate = start.clone().add(pickerdata.maxSpan);
+          var maxDate = pickerdata.maxDate();
           if (maxDate && end.isAfter(maxDate))
               end = maxDate.clone();
-
-          // If the end of the range is before the minimum or the start of the range is
-          // after the maximum, don't display pickerdata range option at all.
-          if ((pickerdata.minDate && end.isBefore(pickerdata.minDate, pickerdata.timepicker ? 'minute' : 'day'))
-            || (maxDate && start.isAfter(maxDate, pickerdata.timepicker ? 'minute' : 'day'))) {
-              continue;
-            }
 
           //Support unicode chars in the range names.
           var elem = document.createElement('textarea');
@@ -213,31 +185,58 @@ $.extend(PeriodDateRangePickerBinding, {
           ranges[rangeHtml] = [start, end];
       }
       pickerdata.ranges = ranges
-      var list = '<ul>';
+
+      var list = '<ul class="ranges" data-bind="foreach: $data.ranges">';
       for (range in pickerdata.ranges) {
-          list += '<li data-range-key="' + range + '">' + range + '</li>';
+          list += '<li class="range" data-bind="css: {active: $parent.isActiveDateRange($data)}, text: $data.title, click: function(){ $parent.setDateRange($data); }">' + range + '</li>';
       }
       if (pickerdata.showCustomRangeLabel) {
           list += '<li data-range-key="' + pickerdata.locale.customRangeLabel + '">' + pickerdata.locale.customRangeLabel + '</li>';
       }
       list += '</ul>';
-      pickerdata.container.find('.ranges ul').remove()
-      pickerdata.container.find('.ranges').prepend(list);
+      debugger;
+      $(document).find('.daterangepicker .controls .ranges').remove()
+      $(document).find('.daterangepicker .controls .periods').after(list);
+      $(el).trigger("apply");
+      $(el).trigger("change");
     }
+    */
     // Update class
     if (data.hasOwnProperty("class")) {
       $("#"+data.id).addClass(data.class);
     }
 
     // Update options
+    /*
+    */
     if (data.hasOwnProperty("options")) {
-      // Update minYear
-      if (data.options.hasOwnProperty("minYear")) {
-        pickerdata.minYear = data.options.minYear;
+      // Update period
+      if (data.options.hasOwnProperty("period")) {
+        pickerdata.period(data.options.period);
       }
-      // Update maxYear
-      if (data.options.hasOwnProperty("maxYear")) {
-        pickerdata.maxYear = data.options.maxYear;
+      // Update periods
+      if (data.options.hasOwnProperty("periods")) {
+        pickerdata.periods(data.options.periods);
+      }
+      // Update hideWeekdays
+      if (data.options.hasOwnProperty("hideWeekdays")) {
+        pickerdata.hideWeekdays(data.options.hideWeekdays);
+      }
+      // Update single
+      if (data.options.hasOwnProperty("single")) {
+        pickerdata.single(data.options.single);
+      }
+      // Update expanded
+      if (data.options.hasOwnProperty("expanded")) {
+        pickerdata.expanded(data.options.expanded);
+      }
+      // Update orientation
+      if (data.options.hasOwnProperty("orientation")) {
+        pickerdata.orientation(data.options.orientation);
+      }
+      // Update opened
+      if (data.options.hasOwnProperty("opened")) {
+        pickerdata.opened(data.options.opened);
       }
       //$(el).trigger("apply");
       //$(el).trigger("change");

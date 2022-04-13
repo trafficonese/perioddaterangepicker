@@ -2,6 +2,7 @@
 
 export(perioddaterangeOptions)
 export(perioddaterangepicker)
+export(updatePerioddaterangepicker)
 importFrom(htmltools,"htmlDependencies<-")
 importFrom(htmltools,htmlDependencies)
 importFrom(htmltools,htmlDependency)

@@ -1,49 +1,49 @@
 
 
-# updateDaterangepicker
-#
-# Change the start and end values of a daterangepicker on the client
-#
-# @param session The session object passed to function given to shinyServer.
-# @inheritParams daterangepicker
-# @family daterangepicker Functions
-# @export
-# updateDaterangepicker <- function(session, inputId, label = NULL,
-#                                   start = NULL, end = NULL,
-#                                   min = NULL, max = NULL,
-#                                   icon = NULL, options = NULL,
-#                                   ranges = NULL, style = NULL,
-#                                   class = NULL) {
-#
-#   ## If no icon was passed initially, we need to create a WebDependency-list
-#   ## On the JS-side `Shiny.renderDependencies` adds the deps to the header
-#   if (!is.null(icon)) {
-#     icon$htmldeps <- list(shiny::createWebDependency(
-#       htmltools::resolveDependencies(
-#         htmltools::htmlDependencies(
-#           icon
-#         )
-#       )[[1]]
-#     ))
-#   }
-#
-#   message <- filterEMPTY(list(
-#     id = session$ns(inputId),
-#     label = label,
-#     start = start,
-#     end = end,
-#     minDate = min,
-#     maxDate = max,
-#     icon = icon,
-#     options = options,
-#     ranges = ranges,
-#     style = style,
-#     class = class
-#   ))
-#
-#   session$sendInputMessage(inputId, message)
-# }
-#
+#' updatePerioddaterangepicker
+#'
+#' Change the start and end values of a daterangepicker on the client
+#'
+#' @param session The session object passed to function given to shinyServer.
+#' @inheritParams daterangepicker
+#' @family daterangepicker Functions
+#' @export
+updatePerioddaterangepicker <- function(session, inputId, label = NULL,
+                                  start = NULL, end = NULL,
+                                  min = NULL, max = NULL,
+                                  icon = NULL, options = NULL,
+                                  ranges = NULL, style = NULL,
+                                  class = NULL) {
+
+  ## If no icon was passed initially, we need to create a WebDependency-list
+  ## On the JS-side `Shiny.renderDependencies` adds the deps to the header
+  if (!is.null(icon)) {
+    icon$htmldeps <- list(shiny::createWebDependency(
+      htmltools::resolveDependencies(
+        htmltools::htmlDependencies(
+          icon
+        )
+      )[[1]]
+    ))
+  }
+
+  message <- filterEMPTY(list(
+    id = session$ns(inputId),
+    label = label,
+    start = start,
+    end = end,
+    minDate = min,
+    maxDate = max,
+    icon = icon,
+    options = options,
+    ranges = ranges,
+    style = style,
+    class = class
+  ))
+
+  session$sendInputMessage(inputId, message)
+}
+
 
 
 
@@ -62,9 +62,9 @@
 #' @param inputId The input ID
 #' @param label The label for the control, or NULL for no label.
 #' @param start The beginning date of the initially selected. Must be a Date /
-#'   POSIXt or string. If NULL will default to the current day.
+#'   POSIXt or string.
 #' @param end The end date of the initially selected date range. Must be a Date
-#'   / POSIXt or string. If NULL will default to the current day.
+#'   / POSIXt or string.
 #' @param min The earliest date a user may select. Must be a Date or string
 #' @param max The latest date a user may select. Must be a Date or string
 #' @param ranges Set predefined date ranges the user can select from. Each key
@@ -158,7 +158,7 @@ perioddaterangepicker <- function(
 #'   only one period specified.
 #' @param firstDayOfWeek Sets first day of the week. 0 is Sunday, 1 is Monday.
 #'   In case you were wondering, 4 is Thursday.
-#' @param single Should only a single date be returned. Default is \code{FALSE}
+#' @param single Should only a single date be selected. Default is \code{FALSE}
 #' @param orientation Sets the side to which daterangepicker opens. Must be one
 #'   of \code{c('left','right')}.
 #' @param opened By default, daterangepicker is hidden and you need to click the

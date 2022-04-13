@@ -32,7 +32,7 @@ only one period specified.}
 \item{firstDayOfWeek}{Sets first day of the week. 0 is Sunday, 1 is Monday.
 In case you were wondering, 4 is Thursday.}
 
-\item{single}{Should only a single date be returned. Default is \code{FALSE}}
+\item{single}{Should only a single date be selected. Default is \code{FALSE}}
 
 \item{orientation}{Sets the side to which daterangepicker opens. Must be one
 of \code{c('left','right')}.}
