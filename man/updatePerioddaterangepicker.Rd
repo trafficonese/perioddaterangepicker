@@ -21,8 +21,40 @@ updatePerioddaterangepicker(
 }
 \arguments{
 \item{session}{The session object passed to function given to shinyServer.}
+
+\item{inputId}{The input ID}
+
+\item{label}{The label for the control, or NULL for no label.}
+
+\item{start}{The beginning date of the initially selected. Must be a Date /
+POSIXt or string.}
+
+\item{end}{The end date of the initially selected date range. Must be a Date
+/ POSIXt or string.}
+
+\item{min}{The earliest date a user may select. Must be a Date or string}
+
+\item{max}{The latest date a user may select. Must be a Date or string}
+
+\item{icon}{Icon to display next to the label.}
+
+\item{options}{List of further options. See
+\code{\link{perioddaterangeOptions}}}
+
+\item{ranges}{Set predefined date ranges the user can select from. Each key
+is the label for the range, and its value an array with two dates
+representing the bounds of the range.}
+
+\item{style}{Add CSS-styles to the input.}
+
+\item{class}{Custom class}
 }
 \description{
 Change the start and end values of a daterangepicker on the client
 }
-\concept{daterangepicker Functions}
+\seealso{
+Other perioddaterangepicker Functions: 
+\code{\link{perioddaterangeOptions}()},
+\code{\link{perioddaterangepicker}()}
+}
+\concept{perioddaterangepicker Functions}

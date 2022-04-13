@@ -5,8 +5,8 @@
 #' Change the start and end values of a daterangepicker on the client
 #'
 #' @param session The session object passed to function given to shinyServer.
-#' @inheritParams daterangepicker
-#' @family daterangepicker Functions
+#' @inheritParams perioddaterangepicker
+#' @family perioddaterangepicker Functions
 #' @export
 updatePerioddaterangepicker <- function(session, inputId, label = NULL,
                                   start = NULL, end = NULL,

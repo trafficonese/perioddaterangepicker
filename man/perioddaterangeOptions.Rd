@@ -66,6 +66,7 @@ Update the perioddaterangepicker
 \href{https://sensortower.github.io/daterangepicker/docs}{https://sensortower.github.io/}
 
 Other perioddaterangepicker Functions: 
-\code{\link{perioddaterangepicker}()}
+\code{\link{perioddaterangepicker}()},
+\code{\link{updatePerioddaterangepicker}()}
 }
 \concept{perioddaterangepicker Functions}

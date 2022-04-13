@@ -63,6 +63,7 @@ predefined ranges like "Yesterday", "Last 30 Days", etc.
 \href{https://sensortower.github.io/daterangepicker/}{https://sensortower.github.io/}
 
 Other perioddaterangepicker Functions: 
-\code{\link{perioddaterangeOptions}()}
+\code{\link{perioddaterangeOptions}()},
+\code{\link{updatePerioddaterangepicker}()}
 }
 \concept{perioddaterangepicker Functions}
