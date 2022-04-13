@@ -6,8 +6,8 @@
 
 <!-- badges: start -->
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
-[![Codecov test coverage](https://codecov.io/gh/trafficonese/perioddaterangepicker/branch/master/graph/badge.svg)](https://app.codecov.io/gh/trafficonese/perioddaterangepicker?branch=master)
 [![R build status](https://github.com/trafficonese/perioddaterangepicker/workflows/R-CMD-check/badge.svg)](https://github.com/trafficonese/perioddaterangepicker/actions)
+[![Codecov test coverage](https://codecov.io/gh/trafficonese/perioddaterangepicker/branch/main/graph/badge.svg)](https://app.codecov.io/gh/trafficonese/perioddaterangepicker?branch=main)
 <!-- badges: end -->
 
 Custom Shiny input binding for a [Date Range Picker](https://sensortower.github.io/daterangepicker/).
