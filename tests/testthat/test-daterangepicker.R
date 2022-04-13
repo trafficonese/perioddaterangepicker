@@ -18,7 +18,22 @@ test_that("perioddaterangepicker", {
                                              "Heute" = "a",
                                              "Letzten 45 Tage" = list(1213)))
   )
-
+  ## Wrong period
+  expect_error(
+    perioddaterangepicker(inputId = "daterange",
+                          start = start, end = end,
+                          options = perioddaterangeOptions(
+                            period = "Day1"
+                          ))
+  )
+  ## Wrong orientation
+  expect_error(
+    perioddaterangepicker(inputId = "daterange",
+                          start = start, end = end,
+                          options = perioddaterangeOptions(
+                            orientation  = "up"
+                          ))
+  )
 
   ## Daterangepicker ############################
   x <- perioddaterangepicker(inputId = "daterange")

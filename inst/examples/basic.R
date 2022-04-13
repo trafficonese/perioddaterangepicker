@@ -12,7 +12,7 @@ ui <- fluidPage(
     timezone = "utc",
     options = perioddaterangeOptions(
       period = "day",
-      periods = NULL,
+      periods = c("day","week","month"),
       firstDayOfWeek = 1,
       single = FALSE,
       orientation = "right",
@@ -28,7 +28,12 @@ ui <- fluidPage(
         cancelButtonTitle = "Abbrechen",
         endLabel = "Ende",
         inputFormat = "YY-MM-DD",
-        startLabel = "Start"
+        startLabel = "Start",
+        dayLabel = "Tag",
+        weekLabel = "Woche",
+        monthLabel = "Monat",
+        quarterLabel = "Quartal",
+        yearLabel = "Jahr"
         ))
   ),
   verbatimTextOutput("print")
